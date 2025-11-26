@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+</head>
+<body>
+
+<form onsubmit="return val()">
+<fieldset style="width:350px; margin:auto; margin-top:30px;">
+<legend><b>Registration Form</b></legend>
+
+<label>User Name:</label><br>
+<input type="text" id="n"><br><br>2
+
+<label>Email:</label><br>
+<input type="email" id="e"><br><br>
+
+<label>Password:</label><br>
+<input type="password" id="p"><br><br>
+
+<label>Address:</label><br>
+<textarea id="a"></textarea><br><br>
+
+<label>Mobile Number:</label><br>
+<input type="text" id="m"><br><br>
+
+<label>Hobbies:</label><br>
+<input type="checkbox" name="h" value="Reading"> Reading
+<input type="checkbox" name="h" value="Music"> Music
+<input type="checkbox" name="h" value="Sports"> Sports
+<br><br>
+
+<label>Gender:</label><br>
+<input type="radio" name="g" value="Male"> Male
+<input type="radio" name="g" value="Female"> Female
+<input type="radio" name="g" value="Other"> Other
+<br><br>
+
+<label>Upload Photo:</label><br>
+<input type="file" id="photo"><br><br>
+
+<label>Date of Birth:</label><br>
+<input type="date" id="dob"><br><br>
+
+<label>Website URL:</label><br>
+<input type="url" id="url"><br><br>
+
+<label>Favorite Color:</label><br>
+<input type="color" id="color"><br><br>
+
+<input type="submit" value="Register">
+</fieldset>
+</form>
+
+<script>
+function val() {
+    var name = document.getElementById('n').value.trim();
+    var email = document.getElementById('e').value.trim();
+    var pass = document.getElementById('p').value.trim();
+    var addr = document.getElementById('a').value.trim();
+    var mobile = document.getElementById('m').value.trim();
+    var dob = document.getElementById('dob').value.trim();
+    var url = document.getElementById('url').value.trim();
+
+    if (name == "" || email == "" || pass == "" || addr == "" || mobile == "" || dob == "" || url == "") {
+        alert("Please fill all required fields!");
+        return false;
+    }
+
+    if (pass.length < 6) {
+        alert("Password must be at least 6 characters long!");
+        return false;
+    }
+
+    var mobilePattern = /^[0-9]{10}$/;
+    if (!mobile.match(mobilePattern)) {
+        alert("Enter a valid 10-digit mobile number!");
+        return false;
+    }
+
+    var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+        alert("Enter a valid email address!");
+        return false;
+    }
+
+    alert("Registration Successful!");
+    return true;
+}
+</script>
+
+</body>
+</html>
